@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Все посты</h1>
+    {% for post in posts %}
+        <div class="post-item">
+            <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+            <p>Автор: {{ post.author.username }} | {{ post.created_at|date:"d.m.Y H:i" }}</p>
+        </div>
+    {% empty %}
+        <p>Постов пока нет. Будь первым!</p>
+    {% endfor %}
+{% endblock %}
